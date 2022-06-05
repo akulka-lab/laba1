@@ -10,6 +10,8 @@ StringProInfo* Create(void*(*KeyboardInput)(void *, int* ), void* (*concatenate)
   strInfo->SplitIntoWords = SplitIntoWords;
   strInfo->print = print;
   strInfo->freedom = freedom;
+  strInfo->print = my_readline;
+  strInfo->freedom = my_memcpy;
 
   return strInfo;
 }
