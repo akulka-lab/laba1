@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1653654653 source:c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\errors.c
+	<stdio.h>
+	<stdlib.h>
+	"errors.h"
+
+1653654653 c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\errors.h
+	<stdio.h>
+	<stdlib.h>
+
+1653655494 source:c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\stringpro.c
+	"StringPro.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1653654897 c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\stringpro.h
+	"StringProInfo.h"
+	"errors.h"
+
+1653654897 c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\stringproinfo.h
+
+1653655432 source:c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\stringproinfo.c
+	"StringProInfo.h"
+	<stdlib.h>
+
+1653654654 source:c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1653654669 c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\menu.h
+	"StringPro.h"
+
+1653655662 source:c:\users\Никита\desktop\последний шанс на 3 лабу\laba.1\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
