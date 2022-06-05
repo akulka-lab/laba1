@@ -1,15 +1,17 @@
 #include "StringProInfo.h"
 #include "errors.h"
 
-struct StringPro
+typedef struct StringPro
 {
     StringProInfo* ProInfo;
-    int len;
     void* ptr;
-} typedef StringPro;
+    int len;
+    
+} StringPro;
 
 StringPro* initialize();
 
+void my_memcpy(char* newstr, char* str, int len);
 char *myreadline(const char *prompt);
 void* KeyboardInput(void*str, int *error);
 void* concatenate(void*str,char * addStr);
