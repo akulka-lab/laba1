@@ -20,3 +20,4 @@ void* subString(void*str,int i,int j);
 void* SplitIntoWords (void*str, char* delim, int * error);
 void* print(void*str);
 void* freedom(void*str);
+char permutation(int n, char* str, char* newstr);
