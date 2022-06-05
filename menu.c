@@ -49,10 +49,8 @@ void* menu(StringPro* str)
 
         else if(menu_number == 1)
         {
-            str->ProInfo->KeyboardInput(str, &error); // указатель на структуру
-			errorsPrint(&error, "KeyboardInput");
-
-        }
+            str->ProInfo->KeyboardInput(str, &error);
+	}
 
         else if(menu_number == 2)
         {
@@ -62,8 +60,6 @@ void* menu(StringPro* str)
 			scanf("%s", addStr);
 
 			str->ProInfo->concatenate(str, addStr);
-			errorsPrint(&error, "addStr");
-
         }
 
         else if(menu_number == 3)
@@ -82,8 +78,7 @@ void* menu(StringPro* str)
 
         else if(menu_number == 4)
         {
-            str->ProInfo->SplitIntoWords(str, delim, &error); //delim - разделители
-			errorsPrint(&error,"SplitIntoWords");
+            str->ProInfo->SplitIntoWords(str, delim, &error);
 
         }
 
