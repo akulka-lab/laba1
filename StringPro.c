@@ -3,6 +3,62 @@
 #include <stdlib.h>
 #include <string.h>
 
+void* print(void* str) {
+    StringPro* StrPro = (StringPro*) str;
+    if(!StrPro->ptr)
+    {
+        printf(
+        " _______________________________________________________________________  \n"
+        "|                                                                       | \n"
+        "|                 You have nothing in the string!                       | \n"
+        "|____  _________________________________________________________________| \n"
+        "     |/                                                                   \n");
+
+        return NULL;
+    }
+    printf("\n ->%s \n", StrPro->ptr);
+}
+
+char my_readline(char* message)
+{
+    printf("%s", message);
+    char buffer[81] = { 0 };
+    char* result = NULL;
+    int len = 0, n = 0;
+
+    do
+    {
+        n = scanf("%80[^\n]", buffer);
+
+        if (n > 0)
+        {
+            int buffer_len = my_strlen(buffer);
+            int str_len = len + buffer_len;
+            result = realloc(result, str_len + 1);
+            my_memcpy(result + len, buffer, buffer_len);
+            len = str_len;
+        }
+        else if (n < 0)
+        {
+            if (!result)
+                return NULL;
+        }
+        else
+        {
+            scanf("%*c");
+        }
+    }while (n > 0);
+
+    if (len > 0) {
+        result[len] = '\0';
+    }
+    else
+        result = calloc(1, sizeof(char));
+
+    return result;
+}
+
+
 void my_memcpy(char* newstr, char* str, int len)
 {
     char* s1 = newstr;
@@ -42,13 +98,15 @@ void* KeyboardInput(void* str, int * error)
     scanf("%*c");
     scanf("%[^\n]",keyBoardInputStr);
     m = scanf("%d", &n);
+    
     if (m == 1)
     {
         scanf("%*c");
     }
 
-    char * keyBoardInputPtr = malloc(sizeof(char)*strlen(keyBoardInputStr));
-    my_memcpy(keyBoardInputPtr,keyBoardInputStr,strlen(keyBoardInputStr)*sizeof(char));
+    char * keyBoardInputPtr;
+    keyBoardInputPtr = malloc(sizeof(char)*strlen(keyBoardInputStr));
+    my_memcpy(keyBoardInputPtr, keyBoardInputStr, strlen(keyBoardInputStr)*sizeof(char));
     StrPro->ptr = keyBoardInputPtr;
     StrPro->len = strlen(keyBoardInputPtr);
 }
@@ -86,6 +144,7 @@ void* subString(void* str,int i, int j)
 void* SplitIntoWords(void*str, char* delim, int * error)
 {
     StringPro* StrPro = (StringPro*) str;
+    int i = 0;
  
     if(!StrPro->len)
     {
@@ -108,13 +167,13 @@ void* SplitIntoWords(void*str, char* delim, int * error)
 
     StringPro** Word = malloc(sizeof(StringPro*));
 
-    int i = 0;
     while(word != NULL)
     {
         Word = realloc(Word, (i + 1) * sizeof(StringPro*));
         Word[i] = initialize(str);
         Word[i]->ptr = malloc((strlen(word) + 1) * sizeof(char));
         Word[i]->len = strlen(word);
+
         my_memcpy(Word[i]->ptr, word, strlen(word));
         Word[i]->ProInfo->print(Word[i]); i++;
         word = strtok(NULL, delim);
@@ -122,26 +181,11 @@ void* SplitIntoWords(void*str, char* delim, int * error)
 
 }
 
-void* print(void* str) {
-    StringPro* StrPro = (StringPro*) str;
-    if(!StrPro->ptr)
-    {
-        printf(
-        " _______________________________________________________________________  \n"
-        "|                                                                       | \n"
-        "|                 You have nothing in the string!                       | \n"
-        "|____  _________________________________________________________________| \n"
-        "     |/                                                                   \n");
-
-        return NULL;
-    }
-    printf("\n ->%s \n", StrPro->ptr);
-}
-void* freedom(void*str)
+void* freedom( void*str )
 {
-    StringPro* StrPro = (StringPro*) str;
+    StringPro* an = (StringPro*) str;
     
-    free(StrPro->ptr);
-    free(StrPro->ProInfo);
-    free(StrPro);
+    free(an->ptr);
+    free(an->ProInfo);
+    free(an);
 }
