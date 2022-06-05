@@ -12,7 +12,7 @@ typedef struct StringPro
 StringPro* initialize();
 
 void* print(void*str);
-char my_readline(char* message)
+char my_readline(char* message);
 void my_memcpy(char* newstr, char* str, int len);
 char *myreadline(const char *prompt);
 void* KeyboardInput(void*str, int *error);
