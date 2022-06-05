@@ -181,6 +181,59 @@ void* SplitIntoWords(void*str, char* delim, int * error)
 
 }
 
+char permutation(int n, char* str, char* newstr)
+{
+    int len = my_strlen(str);
+    int dlina = 0, flag = 0;
+    for (int i = 0; i < len; i++)
+    {
+        dlina++;
+        if (str[i + 1] == ' ' || str[i + 1] == '\t')
+        {
+            if (str[i] == ',' || str[i] == '.' || str[i] == '/' || str[i] == ')')
+            {
+                if (flag == 0)
+                {
+                    wordob1(str, n, i - 1, dlina - 1);
+                    flag = 1;
+                }
+
+                else if (flag == 1)
+                {
+                    wordob2(str, n, i - 1, dlina - 1);
+                }
+            }
+            else
+            {
+                if (flag == 0)
+                {
+                    wordob1(str, n, i, dlina);
+                    flag = 1;
+                }
+
+                else if (flag == 1)
+                {
+                    wordob2(str, n, i, dlina);
+                }
+            }
+            dlina = 0;
+        }
+    }
+    if (flag == 0)
+    {
+        wordob1(str, n, len - 1, dlina);
+        flag = 1;
+    }
+
+    else if (flag == 1)
+    {
+        wordob2(str, n, len - 1, dlina);
+    }
+    my_memcpy(newstr, str, len);
+    newstr[len] = '\0';
+
+}
+
 void* freedom( void*str )
 {
     StringPro* an = (StringPro*) str;
